@@ -1,0 +1,36 @@
+/*body {
+  font-family: American Typewriter, serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background: linear-gradient(to right, #93a5cf, #E4EfE9);
+  color: #333;
+}
+
+#assignment-form button {
+  padding: 10px 20px;
+  background-color: #09203F;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#assignment-list {
+  list-style: none;
+  padding: 0;
+}
+
+#assignment-list li {
+  background-color: #faf6f1;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}*/

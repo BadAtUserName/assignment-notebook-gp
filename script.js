@@ -73,7 +73,7 @@ assignmentForm.addEventListener('submit', function (event) {
     alert('You should enter an assignment');
     return;
   }
-  if (newAssignment.dueDate <= Date.now()) {
+  if (Date.parse(newAssignment.dueDate) <= Date.now()) {
     alert('Please enter a future date');
     return;
   }

@@ -18,7 +18,7 @@ function addNewAssignment(assignment) {
   
   assignmentText.textContent = assignment;
 
-  const checkBox = createCheckBox();
+  const checkBox = createCheckBox(assignmentText);
   const deleteButton = createDeleteButton(listItem);
 
   listItem.appendChild(checkBox);
@@ -31,13 +31,14 @@ function addNewAssignment(assignment) {
 
 
 //function to create a checkbox
-function createCheckBox() {
+//function is passed assignmentText as an arguement to make it accessible to the function
+function createCheckBox(assignmentText) {
   const checkBox = document.createElement('input');
   
   checkBox.setAttribute('type', 'checkbox');
   
-  checkBox.addEventListener('change', function() {
-    if (this.checked) {
+  checkBox.addEventListener('change', function(event) {
+    if (event.target.checked) {
       assignmentText.style.textDecoration = 'line-through';
     } else {
       assignmentText.style.textDecoration = 'none'

@@ -5,6 +5,7 @@
 const assignmentForm = document.getElementById('assignment-form');
 const userInput = document.getElementById('userInput');
 const assignmentList = document.getElementById('assignment-list');
+const dueDate = document.getElementById('dueDate');
 
 //TODO Add the weather
 
@@ -12,11 +13,11 @@ const assignmentList = document.getElementById('assignment-list');
 //DONE-TODO create a new item assignent in the unordered list
 
 //function to create new assignment
-function addNewAssignment(assignment) { 
+function addNewAssignment(newAssignment) {
   const listItem = document.createElement('li');
   const assignmentText = document.createElement('span')
-  
-  assignmentText.textContent = assignment;
+
+  assignmentText.textContent = newAssignment.assignment + " " + newAssignment.dueDate;
 
   const checkBox = createCheckBox(assignmentText);
   const deleteButton = createDeleteButton(listItem);
@@ -34,10 +35,10 @@ function addNewAssignment(assignment) {
 //function is passed assignmentText as an arguement to make it accessible to the function
 function createCheckBox(assignmentText) {
   const checkBox = document.createElement('input');
-  
+
   checkBox.setAttribute('type', 'checkbox');
-  
-  checkBox.addEventListener('change', function(event) {
+
+  checkBox.addEventListener('change', function (event) {
     if (event.target.checked) {
       assignmentText.style.textDecoration = 'line-through';
     } else {
@@ -51,8 +52,8 @@ function createCheckBox(assignmentText) {
 function createDeleteButton(listItem) {
   const deleteButton = document.createElement('button');
   deleteButton.textContent = 'delete';
-  
-  deleteButton.addEventListener('click', function() {
+
+  deleteButton.addEventListener('click', function () {
     assignmentList.removeChild(listItem);
     console.log(assignmentList);
   });
@@ -61,12 +62,19 @@ function createDeleteButton(listItem) {
 
 //Event listeners
 //event listener for submit button 
-assignmentForm.addEventListener('submit', function(event) {
+assignmentForm.addEventListener('submit', function (event) {
   event.preventDefault();
-  const newAssignment = userInput.value
+  const newAssignment = {
+    "assignment": userInput.value, 
+    "dueDate": dueDate.value
+  };
 
-  if (newAssignment === '') {
+  if (newAssignment.assignment === '') {
     alert('You should enter an assignment');
+    return;
+  }
+  if (newAssignment.dueDate <= Date.now()) {
+    alert('Please enter a future date');
     return;
   }
   userInput.value = ''; // will clear the input field after assignment is added
